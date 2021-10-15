@@ -1,0 +1,65 @@
+{
+  "name": "werft",
+  "version": "3.0.1",
+  "description": "node express server",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "clean": "rimraf dist/*",
+    "copy-assets": "ts-node tools/copy-assets",
+    "lint": "eslint --ext .ts src",
+    "lint-autofix": "eslint --ext .ts --fix src",
+    "tsc": "tsc",
+    "build": "npm-run-all clean tsc",
+    "build:dev": "npm-run-all clean tsc",
+    "dev:start": "cross-env npm-run-all build:dev start",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "Alabbas Alhaj Ali <weeamha@gmail.com>",
+  "dependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.7",
+    "@types/fs-extra": "^9.0.4",
+    "@types/gm": "^1.18.9",
+    "@types/mongodb": "^3.6.8",
+    "@types/multer": "^1.4.5",
+    "@types/node": "^16.10.3",
+    "@types/request": "^2.48.7",
+    "@types/request-promise-native": "^1.0.18",
+    "@types/rimraf": "^3.0.0",
+    "@types/shortid": "0.0.29",
+    "axios": "^0.22.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "fs-extra": "^9.1.0",
+    "gm": "^1.23.1",
+    "lost": "^8.3.0",
+    "mongodb": "^3.6.3",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.12",
+    "npm-run-all": "^4.1.5",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.2",
+    "shortid": "^2.2.16",
+    "tempy": "^1.0.1",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.1.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0"
+  }
+}
